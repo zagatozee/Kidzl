@@ -3,7 +3,7 @@ import { Row, RowState } from "./Row";
 import dictionary from "./dictionary.json";
 import { Clue, clue, describeClue, violation } from "./clue";
 import { Keyboard } from "./Keyboard";
-import targetList from "./targets.json";
+import targetList from "./dictionary.json";
 import {
     describeSeed,
     dictionarySet,
@@ -31,7 +31,7 @@ interface GameProps {
 }
 
 const targets = targetList.slice(0, targetList.indexOf("murky") + 1); // Words no rarer than this one
-const minLength = 4;
+const minLength = 3;
 const maxLength = 5;
 
 function randomTarget(wordLength: number): string {
