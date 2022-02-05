@@ -1,8 +1,15 @@
-# hello wordl
+# Kidzl, is based on hello wordl by https://github.com/lynn/hello-wordl
 
 It's [Wordle](https://www.powerlanguage.co.uk/wordle/) but you can play forever!
 
 Play it [**here**](https://hellowordl.net/).
+
+Kidzle differes from the others by being intended for use by Primary or Elementary aged children. 
+The target word list is intended to be used by children in the 5 to 8 year old range.
+
+It has a slider to choose form 3, 4 or 5 letter words.
+
+(And eventually will have an opiton to select the possible target words, based on levelled sets of words; high frequency and phonemic awareness)
 
 ## Introduction
 
