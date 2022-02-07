@@ -10,6 +10,8 @@ export const maxGuesses = 10;
 
 export const dictionarySet: Set<string> = new Set(dictionary);
 
+export const difficultyJPSet: Set<string> = new Set(difficultyJP);
+
 function mulberry32(a: number) {
   return function () {
     var t = (a += 0x6d2b79f5);

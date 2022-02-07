@@ -1,5 +1,5 @@
 import "./App.css";
-import { maxGuesses, seed, urlParam } from "./util";
+import { maxGuesses, seed, urlParam, difficultyJPSet } from "./util";
 import Game from "./Game";
 import { useEffect, useState } from "react";
 import { About } from "./About";
@@ -164,6 +164,13 @@ function App() {
               <option value="qwertzuiop-asdfghjkl-ByxcvbnmE">QWERTZ</option>
               <option value="BpyfgcrlE-aoeuidhtns-qjkxbmwvz">Dvorak</option>
               <option value="qwfpgjluy-arstdhneio-BzxcvbkmE">Colemak</option>
+              <option value="tip-as-BnE">Level 1</option>
+              <option value="ertip-asdhk-BcnmE">Level 3</option>
+              <option value="ertuiop-asdfghkl-BcbnmE">Level 5</option>
+              <option value="ertuiop-asdfghjkl-BcbnmE">Level 7</option>
+              <option value="wertuiop-asdfghjkl-BzcvbnmE">Level 9</option>
+              <option value="wertyuiop-asdfghjkl-BzxcvbnmE">Level 11</option>
+              <option value="qwertyuiop-asdfghjkl-BzxcvbnmE">Level 13+</option>
             </select>
             <input
               style={{ marginLeft: 20 }}
@@ -176,17 +183,18 @@ function App() {
           </div>
         </div>
       )}
-      <Game
-        maxGuesses={maxGuesses}
-        hidden={page !== "game"}
-        difficulty={difficulty}
-        colorBlind={colorBlind}
-        keyboardLayout={keyboard.replaceAll(
-          /[BE]/g,
-          (x) => (enterLeft ? "EB" : "BE")["BE".indexOf(x)]
-        )}
-      />
-    </div>
+          <Game
+              difficultyJPSet={difficultyJPSet}
+              maxGuesses={maxGuesses}
+              hidden={page !== "game"}
+              difficulty={difficulty}
+              colorBlind={colorBlind}
+              keyboardLayout={keyboard.replaceAll(
+                  /[BE]/g,
+                  (x) => (enterLeft ? "EB" : "BE")["BE".indexOf(x)]
+              )}
+          />
+      </div>
   );
 }
 

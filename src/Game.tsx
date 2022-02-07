@@ -3,10 +3,11 @@ import { Row, RowState } from "./Row";
 import dictionary from "./dictionary.json";
 import { Clue, clue, describeClue, violation } from "./clue";
 import { Keyboard } from "./Keyboard";
-import targetList from "./targets.json";
+import targetList from "./jollyPhonics.json";
 import {
     describeSeed,
     dictionarySet,
+    difficultyJPSet,
     Difficulty,
     pick,
     resetRng,
@@ -28,11 +29,38 @@ interface GameProps {
     difficulty: Difficulty;
     colorBlind: boolean;
     keyboardLayout: string;
+    difficultyJP: number;
+   // addiotnal lines planning for specific keyboard options only
+   
+   // keyboardLayout: string; SATPIN
+   // keyboardLayout: string; SATPINCKEHRMD
+   // keyboardLayout: string; SATPINCKEHRMDGOULFB
+   // keyboardLayout: string; SATPINCKEHRMDGOULFBJ
+   // keyboardLayout: string; SATPINCKEHRMDGOULFBJZWV
+   // keyboardLayout: string; SATPINCKEHRMDGOULFBJZWVYX
+   // keyboardLayout: string; SATPINCKEHRMDGOULFBJZWVYXQ
 }
 
-const targets = targetList
+
+// const targets = targetList.slice(0, targetList.indexOf("murky") + 1); // Words no rarer than this one
+const targets = targetList.slice(0, targetList.indexOf("insist") + 1); //SATPIN
+// const targets = targetList.slice(0, targetList.indexOf("are") + 1); //SATPIN+tricky
+// const targets = targetList.slice(0, targetList.indexOf("dentist") + 1); //SATPINCKEHRMD
+// const targets = targetList.slice(0, targetList.indexOf("there") + 1); //SATPINCKEHRMD+tricky
+// const targets = targetList.slice(0, targetList.indexOf("bucket") + 1); //SATPINCKEHRMDGOULFB
+// const targets = targetList.slice(0, targetList.indexOf("give") + 1); //SATPINCKEHRMDGOULFB+tricky
+// const targets = targetList.slice(0, targetList.indexOf("sweetcorn") + 1); //SATPINCKEHRMDGOULFBJ
+// const targets = targetList.slice(0, targetList.indexOf("more") + 1); //SATPINCKEHRMDGOULFBJ+tricky
+// const targets = targetList.slice(0, targetList.indexOf("goose") + 1); //SATPINCKEHRMDGOULFBJZWV
+// const targets = targetList.slice(0, targetList.indexOf("made") + 1); //SATPINCKEHRMDGOULFBJZWV+tricky
+// const targets = targetList.slice(0, targetList.indexOf("thrill") + 1); //SATPINCKEHRMDGOULFBJZWVYX
+// const targets = targetList.slice(0, targetList.indexOf("always") + 1); //SATPINCKEHRMDGOULFBJZWVYX+tricky
+// const targets = targetList.slice(0, targetList.indexOf("marbles") + 1); //SATPINCKEHRMDGOULFBJZWVYXQ
+// const targets = targetList.slice(0, targetList.indexOf("salute") + 1); //SATPINCKEHRMDGOULFBJZWVYXQ
 const minLength = 3;
 const maxLength = 5;
+const minDifficultyJP = 1;
+const maxDifficultyJP = 14;
 
 function randomTarget(wordLength: number): string {
     const eligible = targets.filter((word) => word.length === wordLength);
@@ -64,12 +92,23 @@ if (initChallenge && !dictionarySet.has(initChallenge)) {
     initChallenge = "";
     challengeError = true;
 }
+if (initChallenge && !difficultyJPSet.has(initChallenge)) {
+    initChallenge = "";
+    challengeError = true;
+}
 
 function parseUrlLength(): number {
     const lengthParam = urlParam("length");
     if (!lengthParam) return 4;
     const length = Number(lengthParam);
     return length >= minLength && length <= maxLength ? length : 4;
+}
+
+function parseUrlDifficultyJP(): number {
+    const difficultyJPParam = urlParam("DifficultyJP");
+    if (!difficultyJPParam) return 4;
+    const difficultyJP = Number(difficultyJPParam);
+    return difficultyJP >= minDifficultyJP && difficultyJP <= maxDifficultyJP ? difficultyJP : 4;
 }
 
 function parseUrlGameNumber(): number {
@@ -85,7 +124,9 @@ function Game(props: GameProps) {
     const [currentGuess, setCurrentGuess] = useState<string>("");
     const [challenge, setChallenge] = useState<string>(initChallenge);
     const [wordLength, setWordLength] = useState(
-        challenge ? challenge.length : parseUrlLength()
+        challenge ? challenge.length : parseUrlLength());
+    const [worddifficultyJP, setWorddifficultyJP] = useState(
+        challenge ? challenge.length : parseUrlDifficultyJP()
     );
     const [gameNumber, setGameNumber] = useState(parseUrlGameNumber());
     const [target, setTarget] = useState(() => {
@@ -120,6 +161,8 @@ function Game(props: GameProps) {
         const newWordLength =
             wordLength >= minLength && wordLength <= maxLength ? wordLength : 4;
         setWordLength(newWordLength);
+        const newWorddifficultyJP =
+            worddifficultyJP >= minDifficultyJP && worddifficultyJP <= maxDifficultyJP ? worddifficultyJP : 4;
         setTarget(randomTarget(newWordLength));
         setHint("");
         setGuesses([]);
@@ -258,7 +301,7 @@ function Game(props: GameProps) {
     return (
         <div className="Game" style={{ display: props.hidden ? "none" : "block" }}>
             <div className="Game-options">
-                <label htmlFor="wordLength">Letters:</label>
+                <label htmlFor="wordLength">Number of letters:</label>
                 <input
                     type="range"
                     min={minLength}
@@ -292,8 +335,35 @@ function Game(props: GameProps) {
                         (document.activeElement as HTMLElement)?.blur();
                     }}
                 >
-                    Give up
+                    Give Up
         </button>
+                <div className="Game" style={{ display: props.hidden ? "none" : "block" }}>
+                    <div className="Game-options">
+                        <label htmlFor="worddifficultyJP">difficulty of words:</label>
+                        <input
+                            type="range"
+                            min={minDifficultyJP}
+                            max={maxDifficultyJP}
+                            id="worddifficultyJP"
+                            disabled={
+                                gameState === GameState.Playing &&
+                                (guesses.length > 0 || currentGuess !== "" || challenge !== "")
+                            }
+                            value={worddifficultyJP}
+                            onChange={(e) => {
+                                const difficultyJP = Number(e.target.value);
+                                resetRng();
+                                setGameNumber(1);
+                                setGameState(GameState.Playing);
+                                setGuesses([]);
+                                setCurrentGuess("");
+                                // setTarget(randomTarget(length));
+                                setWorddifficultyJP(difficultyJP);
+                                setHint(`${difficultyJP} word list`);
+                            }}
+                        ></input>
+                    </div>
+                </div>
             </div>
             <table
                 className="Game-rows"
