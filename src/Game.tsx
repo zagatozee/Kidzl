@@ -94,7 +94,7 @@ if (initChallenge && !dictionarySet.has(initChallenge)) {
 }
 if (initChallenge && !difficultyJPSet.has(initChallenge)) {
     initChallenge = "";
-    challengeError = true;
+    challengeError = true
 }
 
 function parseUrlLength(): number {
