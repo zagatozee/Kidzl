@@ -1,15 +1,35 @@
 import { Difficulty, englishNumbers, ordinal } from "./util";
+import { currentDifficultyJP } from "./Game";
 
 export enum Clue {
   Absent,
   Elsewhere,
   Correct,
+  NotInKeyboardSpec,
+  None
 }
 
 export interface CluedLetter {
   clue?: Clue;
   letter: string;
 }
+
+var WhitelistedLettersByDifficulty = [
+  "satpin",
+  "satpin",
+  "satpinckehrmd",
+  "satpinckehrmd",
+  "satpinckehrmdgoulfbn",
+  "satpinckehrmdgoulfbn",
+  "satpinckehrmdgoulfbnj",
+  "satpinckehrmdgoulfbnj",
+  "satpinckehrmdgoulfbnjzwv",
+  "satpinckehrmdgoulfbnjzwv",
+  "satpinckehrmdgoulfbnjzwvyx",
+  "satpinckehrmdgoulfbnjzwvyx",
+  "satpinckehrmdgoulfbnjzwvyxq",
+  "satpinckehrmdgoulfbnjzwvyxq"
+];
 
 export function clue(word: string, target: string): CluedLetter[] {
   let elusive: string[] = [];
@@ -26,10 +46,19 @@ export function clue(word: string, target: string): CluedLetter[] {
       // "use it up" so we don't clue at it twice
       elusive[j] = "";
       return { clue: Clue.Elsewhere, letter };
-    } else {
+    } else if ((WhitelistedLettersByDifficulty[currentDifficultyJP - 1].indexOf(letter) === -1))
+    {
+      return { clue: Clue.NotInKeyboardSpec, letter};
+    }
+     else {
       return { clue: Clue.Absent, letter };
     }
   });
+}
+
+export function IsLetterAllowed(letter: string) : boolean 
+{
+  return WhitelistedLettersByDifficulty[currentDifficultyJP - 1].indexOf(letter) !== -1;
 }
 
 export function clueClass(clue: Clue): string {
@@ -37,7 +66,13 @@ export function clueClass(clue: Clue): string {
     return "letter-absent";
   } else if (clue === Clue.Elsewhere) {
     return "letter-elsewhere";
-  } else {
+  } else if (clue === Clue.NotInKeyboardSpec){
+    return "letter-notinkeyboardspec";
+  }
+  else if (clue === Clue.None)
+  {
+    return "";
+  }else {
     return "letter-correct";
   }
 }

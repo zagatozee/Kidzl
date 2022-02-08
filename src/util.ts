@@ -1,4 +1,5 @@
 import dictionary from "./dictionary.json";
+import difficultyJP from "./jollyPhonics.json";
 
 export enum Difficulty {
   Normal,
