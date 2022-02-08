@@ -1,4 +1,4 @@
-import { Clue, clueClass } from "./clue";
+import { Clue, clueClass, IsLetterAllowed } from "./clue";
 
 interface KeyboardProps {
   layout: string;
@@ -22,8 +22,12 @@ export function Keyboard(props: KeyboardProps) {
           {row.map((label, j) => {
             let className = "Game-keyboard-button";
             const clue = props.letterInfo.get(label);
-            if (clue !== undefined) {
+            if (clue !== undefined && clue !== Clue.None) {
               className += " " + clueClass(clue);
+            }
+            if (!IsLetterAllowed(label))
+            {
+              className += " letter-notinkeyboardspec";
             }
             if (label.length > 1) {
               className += " Game-keyboard-button-wide";
