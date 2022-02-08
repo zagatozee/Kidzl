@@ -15,20 +15,20 @@ export interface CluedLetter {
 }
 
 var WhitelistedLettersByDifficulty = [
-  "satpin",
-  "satpin",
-  "satpinckehrmd",
-  "satpinckehrmd",
-  "satpinckehrmdgoulfbn",
-  "satpinckehrmdgoulfbn",
-  "satpinckehrmdgoulfbnj",
-  "satpinckehrmdgoulfbnj",
-  "satpinckehrmdgoulfbnjzwv",
-  "satpinckehrmdgoulfbnjzwv",
-  "satpinckehrmdgoulfbnjzwvyx",
-  "satpinckehrmdgoulfbnjzwvyx",
-  "satpinckehrmdgoulfbnjzwvyxq",
-  "satpinckehrmdgoulfbnjzwvyxq"
+  "satpin Enter Backspace",
+  "satpin Enter Backspace",
+  "satpinckehrmd Enter Backspace",
+  "satpinckehrmd Enter Backspace",
+  "satpinckehrmdgoulfbn Enter Backspace",
+  "satpinckehrmdgoulfbn Enter Backspace",
+  "satpinckehrmdgoulfbnj Enter Backspace",
+  "satpinckehrmdgoulfbnj Enter Backspace",
+  "satpinckehrmdgoulfbnjzwv Enter Backspace",
+  "satpinckehrmdgoulfbnjzwv Enter Backspace",
+  "satpinckehrmdgoulfbnjzwvyx Enter Backspace",
+  "satpinckehrmdgoulfbnjzwvyx Enter Backspace",
+  "satpinckehrmdgoulfbnjzwvyxq Enter Backspace",
+  "satpinckehrmdgoulfbnjzwvyxq Enter Backspace"
 ];
 
 export function clue(word: string, target: string): CluedLetter[] {

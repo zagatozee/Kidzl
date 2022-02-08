@@ -153,47 +153,6 @@ function App() {
             </div>
                   </div>
                   <div className="Settings-setting">
-                      <input
-                          id="word-difficulty-setting"
-                          type="range"
-                          min="0"
-                          max="13"
-                          value={difficultyJP}
-                          onChange={(e) => setDifficultyJP(+e.target.value)}
-                      />
-                      <div>
-                          <label htmlFor="word-difficulty-setting">difficultyJP:</label>
-                          <strong>{["Level 1", "Level 1 + Tricky", "Level 2", "Level 2 + Tricky", "Level 3", "Level 3 + Tricky", "Level 4", "Level 4 + Tricky", "Level 5", "Level 5 + Tricky", "Level 6", "Level 6 + Tricky", "Level 7", "Level 8"][difficultyJP]}</strong>
-                          <div
-                              style={{
-                                  fontSize: 14,
-                                  height: 40,
-                                  marginLeft: 8,
-                                  marginTop: 8,
-                              }}
-                          >
-                              {
-                                  [
-                                      `Basic SATPIN words.`,
-                                      `SATPIN with tricky words.`,
-                                      `Basic SATPINCKEHRMD words`,
-                                      `SATPINCKEHRMD with tricky words.`,
-                                      `Basic SATPINCKEHRMDGOULFB words.`,
-                                      `SATPINCKEHRMDGOULFB with tricky words.`,
-                                      `Basic SATPINCKEHRMDGOULFBJ`,
-                                      `SATPINCKEHRMDGOULFBJ with tricky words.`,
-                                      `Basic SATPINCKEHRMDGOULFBJZWV`,
-                                      `SATPINCKEHRMDGOULFBJZWV with tricky words.`,
-                                      `Basic SATPINCKEHRMDGOULFBJZWVYX`,
-                                      `SATPINCKEHRMDGOULFBJZWVYX with tricky words.`,
-                                      'SATPINCKEHRMDGOULFBJZWVYXQ',
-                                      'The full word list'
-                                  ][difficultyJP]
-                              }
-                          </div>
-                      </div>
-                  </div>
-          <div className="Settings-setting">
             <label htmlFor="keyboard-setting">Keyboard layout:</label>
             <select
               name="keyboard-setting"
@@ -206,13 +165,6 @@ function App() {
               <option value="qwertzuiop-asdfghjkl-ByxcvbnmE">QWERTZ</option>
               <option value="BpyfgcrlE-aoeuidhtns-qjkxbmwvz">Dvorak</option>
               <option value="qwfpgjluy-arstdhneio-BzxcvbkmE">Colemak</option>
-              <option value="tip-as-BnE">Level 1</option>
-              <option value="ertip-asdhk-BcnmE">Level 3</option>
-              <option value="ertuiop-asdfghkl-BcbnmE">Level 5</option>
-              <option value="ertuiop-asdfghjkl-BcbnmE">Level 7</option>
-              <option value="wertuiop-asdfghjkl-BzcvbnmE">Level 9</option>
-              <option value="wertyuiop-asdfghjkl-BzxcvbnmE">Level 11</option>
-              <option value="qwertyuiop-asdfghjkl-BzxcvbnmE">Level 13+</option>
             </select>
             <input
               style={{ marginLeft: 20 }}

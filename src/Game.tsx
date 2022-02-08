@@ -368,7 +368,7 @@ function Game(props: GameProps) {
                                 setCurrentGuess("");
                                 setTarget(randomTarget(wordLength));
                                 setWorddifficultyJP(difficultyJP);
-                                setHint(`${difficultyJP} word list`);
+                               // setHint(`${difficultyJP} word list`);
                             }}
                         ></input>
                     </div>
