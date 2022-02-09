@@ -1,40 +1,53 @@
-# hello wordl
+## Kidzl
 
-It's [Wordle](https://www.powerlanguage.co.uk/wordle/) but you can play forever!
+It's [Wordle](https://www.powerlanguage.co.uk/wordle/) but for 4-10 year olds!
 
-Play it [**here**](https://hellowordl.net/).
+Based on the Wordle clone - Hello Wordl, which you can play [**here**](https://hellowordl.net/).
+
+Kidzl however, [**can be played here**](https://zagatozee.github.io/Kidzl/)
 
 ## Introduction
 
 Wordle is a word game similar to the TV show [Lingo](<https://en.wikipedia.org/wiki/Lingo_(British_game_show)>).
 
-You get 6 tries to guess a 5-letter target word. After each guess, the letters light up in various colors as clues. Green means a letter is correct in this spot; yellow means a letter is _elsewhere_ in the target word; gray means a letter is not in the target word at all.
+In Kidzle you get 10 tries to guess a 3, 4 or 5-letter target word. After each guess, the letters light up in various colors as clues. Green means a letter is correct in this spot; yellow means a letter is _elsewhere_ in the target word; gray means a letter is not in the target word at all. Black keys on the keyboard, mean that letter can not possibly be in the words that will be randomly chosen.
 
 Click _About_ inside the game to learn by example.
 
-## History
+Kidzle also differs from the most by having a difficulty slider to select the letters that are in the target words. 
+The keybaord changes to reflect only the letters that are used in the target word group, based on levelled sets of words; high frequency and phonemic awareness.
+There are 14 difficulty levels in total. Every second step in difficulty, the word list goes from the "basic" word list to also include the "tricky" words from that letter group and any from the lower levels.
 
+For eg. Difficulty level 3.
+Only the letters - SATPINCKEHRMD - are included. An example word in this group would be: SAND.
+At level 4 the same letters are used, but the target word list is expanded slightly to include options like: HERE.
+
+## A little History 
 In 2021, Josh "powerlanguage" Wardle created _Wordle_, a version of the Lingo word game that you can play once a day. The target word is the same for everyone each day, and you can share results to Twitter and compare with your friends. This made Wordle [go absolutely viral](https://www.nytimes.com/2022/01/03/technology/wordle-word-game-creator.html) around January 2022.
 
-I liked this game a lot, but wanted to play more than once a day, so I created my own version of it, where the words are random but you can play as much as like. I called it _hello wordl_, which is a sort of [bad programming joke](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program).
+My 5 year old saw her parents playing Wordle and wanted to try too, but quickly got frustrated.
+I figured, why not try to make a version of Wordle that would appeal to her? A little searching on GitHub found Hello Wordl, a really good interpretaton of Wordle made with the intention of being able to play more than once a day. The creator just so happens to have made it open to modification, so that is what I (with some help from a frined) used as a basis to edit - and Kidzl is what we get as a result.
 
-## But playing once a day is the point!
+My hope is that this can be something for students or teachers to use in the class room or at home as a fun way of practicing some basic phonics and spelling.
 
-Don't get me wrong: I, too, think this is the most brilliant aspect of Wordle, and I don't aim to dethrone or improve on the "real" game.
-
-## My word contained two of the same letter!
-
-This can happen in Wordle too, and I give clues exactly the same way Wordle does. I think the game would be too easy if I got rid of double letters, so I won't.
+The share options include links to share the exact game that is played, same target word, same difficulty slider (available letters) showing ont he keyboard. 
+Maybe it could be used to send the link to a class room full of kids to try out at home and share back with the class their Emojii results?
 
 ## Where are the words coming from?
 
-To generate target words, I have been manually curating the top 25,000 or so entries of [Peter Norvig's English word frequency list](http://norvig.com/mayzner.html) to get rid of obscure words, plurals, conjugated verbs, inappropriate language, and British spellings (sorry). If you get dealt a strange target word, please open an issue on this here GitHub repository.
+The target word groups are based on levelled sets of words factoring high frequency and phonemic awareness. 
+The JollyPhonics.json file in the code is used as the target word list. The name of that file should give an idea where the bulk of the target word list was sourced from.
 
-To check guesses, I use some variation of the _Official Tournament and Club Word List_ used in North American Scrabble tournaments. (I'm not a native English speaker, but my English tends mostly American.)
+## My word contained two of the same letter!
+
+This can happen in Wordle too, clues are given the same way Wordle does.
+
+
+
 
 ## For developers
 
-You're very welcome to create your own Wordle offshoot/remix based on _hello wordl_. To get started, you can [fork the code](https://docs.github.com/en/get-started/quickstart/fork-a-repo) on GitHub.
+You're very welcome to create your own Wordle / Kidzl offshoot/remix based on _hello wordl_. To get started, you can [fork the code](https://docs.github.com/en/get-started/quickstart/fork-a-repo) on GitHub.
 
 To run the code locally, first install [Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm#using-a-node-version-manager-to-install-nodejs-and-npm). Then, in this directory, open a terminal and run `npm install` followed by `npm run start`. _hello wordl_ will be running at http://localhost:3000/. Any changes you make to the source code will be reflected there. Have fun!
 
