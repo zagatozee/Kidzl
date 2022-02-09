@@ -6,7 +6,7 @@ export function About() {
   return (
     <div className="App-about">
       <p>
-        <i>Kidzle Is a child focussed game based on hello wordl</i> which of course is a remake of the word game{" "}
+        <i>Kidzle</i> Is a child focussed game based on <i>hello wordl</i> which of course is a remake of the word game{" "}
         <a href="https://www.powerlanguage.co.uk/wordle/">
           <i>Wordle</i>
         </a>{" "}
@@ -79,13 +79,12 @@ export function About() {
       />
       <p>
         Report issues{" "}
-        <a href="https://github.com/lynn/hello-wordl/issues">here</a>, or tweet{" "}
-        <a href="https://twitter.com/chordbug">@chordbug</a>.
+              <a href="https://github.com/zagatozee/Kidzl/issues">here</a>
       </p>
       <p>
         This game will be free and ad-free forever,
         <br />
-        but you can <a href="https://ko-fi.com/chordbug">buy me a coffee</a> if
+        but you can <a href="https://ko-fi.com/chordbug">buy the maker of Hello Wordl a coffee</a> if
         you'd like.
       </p>
     </div>
