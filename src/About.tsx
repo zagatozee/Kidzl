@@ -6,7 +6,7 @@ export function About() {
   return (
     <div className="App-about">
       <p>
-        <i>Kidzle</i> Is a child focussed game based on <i>hello wordl</i> which of course is a remake of the word game{" "}
+        <i>Kidzl</i> Is a child focussed game based on <i>hello wordl</i> which of course is a remake of the word game{" "}
         <a href="https://www.powerlanguage.co.uk/wordle/">
           <i>Wordle</i>
         </a>{" "}
