@@ -25,10 +25,18 @@ export function Keyboard(props: KeyboardProps) {
             if (clue !== undefined && clue !== Clue.None) {
               className += " " + clueClass(clue);
             }
-            if (!IsLetterAllowed(label))
-            {
-              className += " letter-notinkeyboardspec";
-            }
+              let charLabel = label;
+
+              if (label === "Enter") {
+                  charLabel = "*";
+              }
+              else if (label === "Backspace") {
+                  charLabel = "%";
+              }
+
+              if (!IsLetterAllowed(charLabel)) {
+                  className += " letter-notinkeyboardspec";
+              }
             if (label.length > 1) {
               className += " Game-keyboard-button-wide";
             }

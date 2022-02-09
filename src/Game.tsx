@@ -80,7 +80,9 @@ function getChallengeUrl(target: string): string {
         window.location.origin +
         window.location.pathname +
         "?challenge=" +
-        encode(target)
+        encode(target) +
+        "&difficulty=" +
+        currentDifficultyJP
     );
 }
 
@@ -88,6 +90,9 @@ let initChallenge = "";
 let challengeError = false;
 try {
     initChallenge = decode(urlParam("challenge") ?? "").toLowerCase();
+    if (initChallenge) {
+        currentDifficultyJP = parseInt((urlParam("difficulty") ?? "14")); // Default to 14 if no difficulty is defined.
+    }
 } catch (e) {
     console.warn(e);
     challengeError = true;
@@ -346,7 +351,7 @@ function Game(props: GameProps) {
         </button>
                 <div className="Game" style={{ display: props.hidden ? "none" : "block" }}>
                     <div className="Game-options">
-                        <label htmlFor="worddifficultyJP">difficulty of words:</label>
+                        <label htmlFor="worddifficultyJP">Word Difficulty:</label>
                         <input
                             type="range"
                             min={minDifficultyJP}
@@ -356,7 +361,7 @@ function Game(props: GameProps) {
                                 gameState === GameState.Playing &&
                                 (guesses.length > 0 || currentGuess !== "" || challenge !== "")
                             }
-                            value={worddifficultyJP}
+                            value={currentDifficultyJP}
                             onChange={(e) => {
                                 const difficultyJP = Number(e.target.value);
                                 targets = targetList.slice(0, AvailableTargets[difficultyJP - 1]);

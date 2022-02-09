@@ -17,6 +17,13 @@ export function About() {
         You get {maxGuesses} tries to guess a target word.
         <br />
         After each guess, you get Mastermind-style feedback.
+        <br />
+        With Kidzl, the keyboard changes with the Word Difficulty slider.
+        The black keys show that those letters are not possibly in the word.
+        This is a simple way to restrict the likely words to only sounds that the child may have started to learn.
+        <br />
+        Every second step of the slider when moving to the right, the keyboard doesn't change, as the same letter list is being used - BUT - the change is that "tricky" words are being added to the potential word list.
+        <br />
       </p>
       <hr />
       <Row
