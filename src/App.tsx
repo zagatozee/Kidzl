@@ -185,7 +185,7 @@ function App() {
         hidden={page !== "game"}
         difficulty={difficulty}
         colorBlind={colorBlind}
-        keyboardLayout={keyboard.replaceAll(
+        keyboardLayout={keyboard.replace(
           /[BE]/g,
           (x) => (enterLeft ? "EB" : "BE")["BE".indexOf(x)]
         )}
