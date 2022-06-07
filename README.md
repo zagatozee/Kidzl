@@ -4,7 +4,7 @@ It's [Wordle](https://www.powerlanguage.co.uk/wordle/) but for 4-10 year olds!
 
 Based on the Wordle clone - Hello Wordl, which you can play [**here**](https://hellowordl.net/).
 
-Kidzl however, [**can be played here**](https://zagatozee.github.io/Kidzl/)
+Kidzl however, [**can be played here**](https://Kidzl.xyz/)
 
 ## Introduction
 
