@@ -67,7 +67,14 @@ const maxDifficultyJP = 14;
 export var currentDifficultyJP = 4;
 
 function randomTarget(wordLength: number): string {
-    const eligible = targets.filter((word) => word.length === wordLength);
+   // - chat gpt says to edit this to fix bad sorting //  const eligible = targets.filter((word) => word.length === wordLength);
+    const currentAllowedLetters = WhitelistedLettersByDifficulty[difficultyJP]; // Get the allowed letters for this difficulty
+
+const eligible = targets.filter((word) =>
+    word.length === wordLength && 
+    [...word].every(letter => currentAllowedLetters.includes(letter))
+);
+// end of chat gpt edit
     let candidate: string;
     do {
         candidate = pick(eligible);
