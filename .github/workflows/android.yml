@@ -76,8 +76,8 @@ jobs:
       - name: Ensure Gradle Wrapper Exists
         run: |
           mkdir -p android/gradle/wrapper
-          curl -o android/gradle/wrapper/gradle-wrapper.jar https://services.gradle.org/distributions/gradle-8.2.1/gradle-8.2.1-all.zip
-          unzip -o android/gradle/wrapper/gradle-wrapper.jar -d android/gradle/wrapper/
+          curl -o android/gradle/wrapper/gradle-wrapper.jar https://raw.githubusercontent.com/gradle/gradle/master/gradle/wrapper/gradle-wrapper.jar
+          curl -o android/gradle/wrapper/gradle-wrapper.properties https://raw.githubusercontent.com/gradle/gradle/master/gradle/wrapper/gradle-wrapper.properties
           curl -o android/gradlew https://raw.githubusercontent.com/gradle/gradle/master/gradlew
           curl -o android/gradlew.bat https://raw.githubusercontent.com/gradle/gradle/master/gradlew.bat
           chmod +x android/gradlew
