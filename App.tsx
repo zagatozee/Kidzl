@@ -1,5 +1,5 @@
 import "./App.css";
-import { maxGuesses, seed, urlParam } from "./util";
+import { maxGuesses, seed, urlParam, difficultyJPSet } from "./util";
 import Game from "./Game";
 import { useEffect, useState } from "react";
 import { About } from "./About";
@@ -37,7 +37,7 @@ function App() {
   const [dark, setDark] = useSetting<boolean>("dark", prefersDark);
   const [colorBlind, setColorBlind] = useSetting<boolean>("colorblind", false);
   const [difficulty, setDifficulty] = useSetting<number>("difficulty", 0);
-  const [difficultyJP] = useSetting<number>("difficultyJP", 0);
+  const [difficultyJP, setDifficultyJP] = useSetting<number>("difficultyJP", 0);
   const [keyboard, setKeyboard] = useSetting<string>(
     "keyboard",
     "qwertyuiop-asdfghjkl-BzxcvbnmE"
