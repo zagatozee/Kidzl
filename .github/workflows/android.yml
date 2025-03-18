@@ -2,12 +2,12 @@ name: Build Android App
 on:
   push:
     branches:
-      - main  # Runs when main branch is updated
+      - main  # Runs when the main branch is updated
 
 jobs:
   build-android:
     runs-on: ubuntu-latest  # Ubuntu (free on GitHub Actions)
-    
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -25,6 +25,9 @@ jobs:
 
       - name: Install Capacitor CLI
         run: npm install -g @capacitor/cli
+
+      - name: Add Android platform  # <-- This ensures Android is added
+        run: npx cap add android
 
       - name: Sync Capacitor with Android
         run: npx cap sync android
