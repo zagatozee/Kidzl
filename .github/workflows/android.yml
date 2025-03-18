@@ -26,6 +26,9 @@ jobs:
       - name: Install Capacitor CLI
         run: npm install -g @capacitor/cli
 
+      - name: Initialize Capacitor
+        run: npx cap init "Kidzl" "Kidzl"
+
       - name: Add Android platform  # <-- This ensures Android is added
         run: npx cap add android
 
