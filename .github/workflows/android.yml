@@ -36,8 +36,13 @@ jobs:
         run: |
           echo 'export default { appId: "xyz.kidzl.app", appName: "Kidzl", webDir: "build", bundledWebRuntime: false };' > capacitor.config.ts
       
-      - name: Add Android platform  # <-- This ensures Android is added
-        run: npx cap add android
+      - name: Ensure Android platform exists
+        run: |
+          if [ ! -d "android" ]; then
+            npx cap add android
+          fi
+          npx cap sync android
+
 
       - name: Build React app
         run: npm run build
