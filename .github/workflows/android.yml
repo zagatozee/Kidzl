@@ -35,6 +35,15 @@ jobs:
       - name: Add Android platform  # <-- This ensures Android is added
         run: npx cap add android
 
+      - name: Build React app
+        run: npm run build
+
+      - name: Verify web assets exist
+        run: ls -la ./build  # Check if the build folder exists and has files
+
+      - name: Ensure Capacitor knows the correct webDir
+        run: sed -i 's|"webDir": ".*"|"webDir": "build"|' capacitor.config.ts
+
       - name: Sync Capacitor with Android
         run: npx cap sync android
 
