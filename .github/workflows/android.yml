@@ -18,6 +18,9 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
+      - name: Make Gradlew Executable
+        run: chmod +x android/gradlew
+
       - name: Force Gradle to Use Java 17
         run: echo "org.gradle.java.home=/usr/lib/jvm/java-17-openjdk-amd64" >> android/gradle.properties
 
