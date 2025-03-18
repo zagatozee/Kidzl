@@ -1,0 +1,41 @@
+name: Build Android App
+on:
+  push:
+    branches:
+      - main  # Runs when main branch is updated
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest  # Ubuntu (free on GitHub Actions)
+    
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build React app
+        run: npm run build
+
+      - name: Install Capacitor CLI
+        run: npm install -g @capacitor/cli
+
+      - name: Sync Capacitor with Android
+        run: npx cap sync android
+
+      - name: Build Android APK
+        run: |
+          cd android
+          ./gradlew assembleDebug  # Creates APK in android/app/build/outputs/apk/debug/
+
+      - name: Upload APK as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: android-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
