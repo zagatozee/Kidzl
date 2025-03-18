@@ -32,6 +32,10 @@ jobs:
       - name: Install Capacitor Android Platform
         run: npm install @capacitor/android
 
+      - name: Create Capacitor config
+        run: |
+        echo "export default { appId: 'xyz.kidzl.app', appName: 'Kidzl', webDir: 'build', bundledWebRuntime: false };" > capacitor.config.ts
+
       - name: Add Android platform  # <-- This ensures Android is added
         run: npx cap add android
 
