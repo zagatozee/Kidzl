@@ -29,6 +29,9 @@ jobs:
       - name: Initialize Capacitor
         run: npx cap init "Kidzl" "xyz.kidzl.app"
 
+      - name: Install Capacitor Android Platform
+        run: npm install @capacitor/android
+
       - name: Add Android platform  # <-- This ensures Android is added
         run: npx cap add android
 
