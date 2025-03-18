@@ -73,6 +73,14 @@ jobs:
       - name: Sync Capacitor with Android
         run: npx cap sync android
 
+      - name: Download Gradle Wrapper
+        run: |
+         mkdir -p android/gradle/wrapper
+         curl -o android/gradle/wrapper/gradle-wrapper.jar https://services.gradle.org/distributions/gradle-8.2.1-all.zip
+         curl -o android/gradlew https://raw.githubusercontent.com/gradle/gradle/master/gradlew
+         curl -o android/gradlew.bat https://raw.githubusercontent.com/gradle/gradle/master/gradlew.bat
+         chmod +x android/gradlew
+
       - name: Build Android APK
         run: |
           cd android
